@@ -312,21 +312,145 @@ nav.filled{background:rgba(3,8,5,0.95);backdrop-filter:blur(14px);border-bottom:
 <!-- TRACE CONNECTOR 5 -->
 <div class="trace-connector"><svg viewBox="0 0 1200 80" preserveAspectRatio="none"><polyline points="600,0 600,20 750,20 750,60 600,60 600,80" fill="none" stroke="#00e57a" stroke-width="1.5" stroke-opacity="0.4"/><circle cx="600" cy="0" r="3" fill="#00e57a" opacity="0.6"/><circle cx="600" cy="80" r="3" fill="#00e57a" opacity="0.6"/></svg></div>
 
-<!-- ═══ CONTACT (with oscope model) ═══ -->
+<!-- ═══ CONTACT ═══ -->
 <section class="section" id="contact">
   <div class="section-inner">
-    <div class="sec-hd rv"><span class="sec-n">05</span><span class="sec-l"></span><span class="sec-t">CONTACT</span><span class="sec-l"></span><span class="sec-n">05</span></div>
-    <div class="sec-split flip rv">
-      <div class="model-wrap rl">
-        <canvas id="oscope-canvas"></canvas>
-        <div class="model-label">● OSCILLOSCOPE — ATE</div>
+
+    <!-- Warm intro -->
+    <div class="rv" style="text-align:center;margin-bottom:56px">
+      <div style="font-family:'Space Mono',monospace;font-size:11px;color:rgba(0,229,122,0.5);letter-spacing:0.18em;text-transform:uppercase;margin-bottom:12px">05 — Let's Talk</div>
+      <h2 style="font-family:'Bebas Neue',sans-serif;font-size:clamp(36px,6vw,64px);color:#fff;letter-spacing:0.06em;line-height:1;margin-bottom:16px">Got a project in mind?<br><span style="color:var(--g)">Let's build it.</span></h2>
+      <p style="font-size:15px;color:rgba(255,255,255,0.45);max-width:480px;margin:0 auto;line-height:1.8">Whether it's a job opportunity, a collaboration, or just a conversation about robotics — my inbox is always open.</p>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start">
+
+      <!-- LEFT — Contact Form -->
+      <div class="rv" style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:32px">
+        <h3 style="font-size:18px;color:#fff;font-weight:500;margin-bottom:4px">Send me a message</h3>
+        <p style="font-size:13px;color:rgba(255,255,255,0.35);margin-bottom:28px;line-height:1.6">I'll get back to you within 24 hours.</p>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px">
+          <div>
+            <label style="font-size:12px;color:rgba(255,255,255,0.4);display:block;margin-bottom:6px">Name</label>
+            <input type="text" placeholder="Your name" id="cf-name" style="width:100%;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:8px;padding:12px 14px;color:#fff;font-family:'Inter',sans-serif;font-size:14px;outline:none;transition:border-color 0.2s" onfocus="this.style.borderColor='rgba(0,229,122,0.45)'" onblur="this.style.borderColor='rgba(255,255,255,0.08)'"/>
+          </div>
+          <div>
+            <label style="font-size:12px;color:rgba(255,255,255,0.4);display:block;margin-bottom:6px">Email</label>
+            <input type="email" placeholder="your@email.com" id="cf-email" style="width:100%;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:8px;padding:12px 14px;color:#fff;font-family:'Inter',sans-serif;font-size:14px;outline:none;transition:border-color 0.2s" onfocus="this.style.borderColor='rgba(0,229,122,0.45)'" onblur="this.style.borderColor='rgba(255,255,255,0.08)'"/>
+          </div>
+        </div>
+
+        <div style="margin-bottom:14px">
+          <label style="font-size:12px;color:rgba(255,255,255,0.4);display:block;margin-bottom:6px">Subject</label>
+          <input type="text" placeholder="What's this about?" id="cf-subject" style="width:100%;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:8px;padding:12px 14px;color:#fff;font-family:'Inter',sans-serif;font-size:14px;outline:none;transition:border-color 0.2s" onfocus="this.style.borderColor='rgba(0,229,122,0.45)'" onblur="this.style.borderColor='rgba(255,255,255,0.08)'"/>
+        </div>
+
+        <div style="margin-bottom:22px">
+          <label style="font-size:12px;color:rgba(255,255,255,0.4);display:block;margin-bottom:6px">Message</label>
+          <textarea placeholder="Tell me about your project, opportunity, or just say hi..." id="cf-msg" rows="5" style="width:100%;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:8px;padding:12px 14px;color:#fff;font-family:'Inter',sans-serif;font-size:14px;outline:none;resize:vertical;transition:border-color 0.2s;line-height:1.6" onfocus="this.style.borderColor='rgba(0,229,122,0.45)'" onblur="this.style.borderColor='rgba(255,255,255,0.08)'"></textarea>
+        </div>
+
+        <button onclick="sendMessage()" id="cf-btn" style="width:100%;background:var(--g);color:#030805;font-family:'Inter',sans-serif;font-size:14px;font-weight:600;padding:14px;border:none;border-radius:8px;cursor:pointer;transition:all 0.2s;letter-spacing:0.02em" onmouseover="this.style.background='#00ff8c';this.style.transform='translateY(-1px)'" onmouseout="this.style.background='var(--g)';this.style.transform='none'">
+          Send Message →
+        </button>
+        <div id="cf-status" style="margin-top:10px;font-size:13px;text-align:center;display:none"></div>
       </div>
-      <div>
-        <p style="font-family:'Space Mono',monospace;font-size:11px;color:rgba(0,229,122,0.5);letter-spacing:0.14em;text-transform:uppercase;margin-bottom:32px">Coming soon — contact being patched in</p>
+
+      <!-- RIGHT — Contact Info -->
+      <div class="rr" style="display:flex;flex-direction:column;gap:16px;padding-top:4px">
+
+        <div style="margin-bottom:8px">
+          <h3 style="font-size:18px;color:#fff;font-weight:500;margin-bottom:8px">Contact Information</h3>
+          <p style="font-size:14px;color:rgba(255,255,255,0.4);line-height:1.7">Feel free to reach out through any of these channels.</p>
+        </div>
+
+        <a href="mailto:sskzm5527@gmail.com" style="display:flex;align-items:center;gap:16px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:10px;padding:16px 18px;text-decoration:none;transition:all 0.2s" onmouseover="this.style.background='rgba(0,229,122,0.05)';this.style.borderColor='rgba(0,229,122,0.25)'" onmouseout="this.style.background='rgba(255,255,255,0.02)';this.style.borderColor='rgba(255,255,255,0.06)'">
+          <div style="width:42px;height:42px;background:rgba(0,229,122,0.08);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#00e57a" stroke-width="1.8" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <div>
+            <div style="font-size:12px;color:rgba(255,255,255,0.4);margin-bottom:3px">Email</div>
+            <div style="font-size:14px;color:#fff;font-weight:500">sskzm5527@gmail.com</div>
+          </div>
+        </a>
+
+        <a href="https://www.linkedin.com/in/akhilsebastian5527" target="_blank" style="display:flex;align-items:center;gap:16px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:10px;padding:16px 18px;text-decoration:none;transition:all 0.2s" onmouseover="this.style.background='rgba(0,229,122,0.05)';this.style.borderColor='rgba(0,229,122,0.25)'" onmouseout="this.style.background='rgba(255,255,255,0.02)';this.style.borderColor='rgba(255,255,255,0.06)'">
+          <div style="width:42px;height:42px;background:rgba(0,229,122,0.08);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#00e57a" stroke-width="1.8" stroke-linecap="round"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          </div>
+          <div>
+            <div style="font-size:12px;color:rgba(255,255,255,0.4);margin-bottom:3px">LinkedIn</div>
+            <div style="font-size:14px;color:#fff;font-weight:500">linkedin.com/in/akhilsebastian5527</div>
+          </div>
+        </a>
+
+        <a href="https://github.com/Darkknight5527" target="_blank" style="display:flex;align-items:center;gap:16px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:10px;padding:16px 18px;text-decoration:none;transition:all 0.2s" onmouseover="this.style.background='rgba(0,229,122,0.05)';this.style.borderColor='rgba(0,229,122,0.25)'" onmouseout="this.style.background='rgba(255,255,255,0.02)';this.style.borderColor='rgba(255,255,255,0.06)'">
+          <div style="width:42px;height:42px;background:rgba(0,229,122,0.08);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#00e57a" stroke-width="1.8" stroke-linecap="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+          </div>
+          <div>
+            <div style="font-size:12px;color:rgba(255,255,255,0.4);margin-bottom:3px">GitHub</div>
+            <div style="font-size:14px;color:#fff;font-weight:500">github.com/Darkknight5527</div>
+          </div>
+        </a>
+
+        <a href="tel:+918129107986" style="display:flex;align-items:center;gap:16px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:10px;padding:16px 18px;text-decoration:none;transition:all 0.2s" onmouseover="this.style.background='rgba(0,229,122,0.05)';this.style.borderColor='rgba(0,229,122,0.25)'" onmouseout="this.style.background='rgba(255,255,255,0.02)';this.style.borderColor='rgba(255,255,255,0.06)'">
+          <div style="width:42px;height:42px;background:rgba(0,229,122,0.08);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#00e57a" stroke-width="1.8" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8a19.79 19.79 0 01-3.07-8.67A2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
+          </div>
+          <div>
+            <div style="font-size:12px;color:rgba(255,255,255,0.4);margin-bottom:3px">Phone</div>
+            <div style="font-size:14px;color:#fff;font-weight:500">+91 8129107986</div>
+          </div>
+        </a>
+
+
+
       </div>
     </div>
   </div>
 </section>
+
+<!-- FOOTER -->
+<footer style="background:rgba(3,8,5,0.99);border-top:1px solid var(--border);padding:28px 40px;text-align:center;position:relative;z-index:10">
+  <div style="font-family:'Space Mono',monospace;font-size:10px;color:rgba(255,255,255,0.2);letter-spacing:0.14em;text-transform:uppercase">
+    Built with embedded passion &nbsp;·&nbsp; Akhil Sebastian &nbsp;·&nbsp; 2026
+  </div>
+</footer>
+
+<script>
+function sendMessage(){
+  const name    = document.getElementById('cf-name').value.trim();
+  const email   = document.getElementById('cf-email').value.trim();
+  const subject = document.getElementById('cf-subject').value.trim();
+  const msg     = document.getElementById('cf-msg').value.trim();
+  const status  = document.getElementById('cf-status');
+  const btn     = document.getElementById('cf-btn');
+
+  if(!name||!email||!subject||!msg){
+    status.style.display='block';
+    status.style.color='#ff6b6b';
+    status.textContent='// Please fill in all fields';
+    return;
+  }
+
+  const mailto = `mailto:sskzm5527@gmail.com?subject=${encodeURIComponent(subject + ' — from ' + name)}&body=${encodeURIComponent('Name: ' + name + '\nEmail: ' + email + '\n\n' + msg)}`;
+  window.location.href = mailto;
+
+  btn.textContent = 'Message Sent ✓';
+  btn.style.background = '#00b85e';
+  status.style.display='block';
+  status.style.color='var(--g)';
+  status.textContent='// Opening your mail client...';
+
+  setTimeout(()=>{
+    btn.textContent='Send Message';
+    btn.style.background='var(--g)';
+    status.style.display='none';
+  }, 3000);
+}
+</script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script>
