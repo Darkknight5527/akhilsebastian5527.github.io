@@ -4,6 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Akhil Sebastian — Robotics & Embedded Engineer</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+CiAgPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNiIgZmlsbD0iIzAzMDgwNSIvPgogIDxyZWN0IHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgcng9IjYiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzAwZTU3YSIgc3Ryb2tlLXdpZHRoPSIxLjUiLz4KICA8dGV4dCB4PSIxNiIgeT0iMjIiIGZvbnQtZmFtaWx5PSJtb25vc3BhY2UiIGZvbnQtc2l6ZT0iMTMiIGZvbnQtd2VpZ2h0PSI3MDAiIAogICAgZmlsbD0iIzAwZTU3YSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgbGV0dGVyLXNwYWNpbmc9IjAuNSI+QVM8L3RleHQ+Cjwvc3ZnPg==">
+<link rel="shortcut icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+CiAgPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNiIgZmlsbD0iIzAzMDgwNSIvPgogIDxyZWN0IHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgcng9IjYiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzAwZTU3YSIgc3Ryb2tlLXdpZHRoPSIxLjUiLz4KICA8dGV4dCB4PSIxNiIgeT0iMjIiIGZvbnQtZmFtaWx5PSJtb25vc3BhY2UiIGZvbnQtc2l6ZT0iMTMiIGZvbnQtd2VpZ2h0PSI3MDAiIAogICAgZmlsbD0iIzAwZTU3YSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgbGV0dGVyLXNwYWNpbmc9IjAuNSI+QVM8L3RleHQ+Cjwvc3ZnPg==">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -201,6 +203,7 @@ nav.filled{background:rgba(3,8,5,0.95);backdrop-filter:blur(14px);border-bottom:
 @media(max-width:768px){
   #skills .section-inner > div{grid-template-columns:1fr!important}
   #skills .section-inner > div > div:last-child{position:static!important}
+  #experience .section-inner > div{grid-template-columns:1fr!important}
 }
 </style>
 </head>
@@ -437,17 +440,184 @@ nav.filled{background:rgba(3,8,5,0.95);backdrop-filter:blur(14px);border-bottom:
 <!-- TRACE CONNECTOR 3 -->
 <div class="trace-connector"><svg viewBox="0 0 1200 80" preserveAspectRatio="none"><polyline points="600,0 600,20 800,20 800,40 1000,40 1000,60 600,60 600,80" fill="none" stroke="#00e57a" stroke-width="1.5" stroke-opacity="0.4"/><circle cx="600" cy="0" r="3" fill="#00e57a" opacity="0.6"/><circle cx="600" cy="80" r="3" fill="#00e57a" opacity="0.6"/><rect x="792" y="12" width="16" height="16" fill="none" stroke="#00e57a" stroke-width="1" opacity="0.4"/><rect x="992" y="32" width="16" height="16" fill="none" stroke="#00e57a" stroke-width="1" opacity="0.4"/></svg></div>
 
-<!-- ═══ EXPERIENCE (with robot model) ═══ -->
+<!-- ═══ EXPERIENCE ═══ -->
 <section class="section" id="experience">
   <div class="section-inner">
     <div class="sec-hd rv"><span class="sec-n">03</span><span class="sec-l"></span><span class="sec-t">EXPERIENCE</span><span class="sec-l"></span><span class="sec-n">03</span></div>
-    <div class="sec-split flip rv">
-      <div class="model-wrap rl">
-        <canvas id="robot-canvas"></canvas>
-        <div class="model-label">● ROBOT ARM — WIREFRAME</div>
-      </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start">
+
+      <!-- LEFT — Internships -->
       <div>
-        <p style="font-family:'Space Mono',monospace;font-size:11px;color:rgba(0,229,122,0.5);letter-spacing:0.14em;text-transform:uppercase;margin-bottom:32px">Coming soon — experience being wired up</p>
+        <div class="rv" style="display:flex;align-items:center;gap:10px;margin-bottom:28px">
+          <div style="width:28px;height:28px;background:rgba(0,229,122,0.08);border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#00e57a" stroke-width="2" stroke-linecap="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></svg>
+          </div>
+          <span style="font-family:'Space Mono',monospace;font-size:11px;color:var(--g);letter-spacing:0.14em;text-transform:uppercase">Internships</span>
+        </div>
+
+        <!-- Timeline -->
+        <div style="position:relative;padding-left:20px;border-left:1px solid rgba(0,229,122,0.2)">
+
+          <!-- AnoraLabs -->
+          <div class="rv exp-item" style="position:relative;margin-bottom:32px">
+            <div style="position:absolute;left:-25px;top:6px;width:10px;height:10px;border-radius:50%;background:var(--g);box-shadow:0 0 8px rgba(0,229,122,0.6)"></div>
+            <div style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.07);border-radius:10px;padding:20px 22px;transition:border-color 0.2s" onmouseover="this.style.borderColor='rgba(0,229,122,0.25)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.07)'">
+              <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px;gap:8px;flex-wrap:wrap">
+                <div>
+                  <div style="font-size:14px;color:#fff;font-weight:500;margin-bottom:2px">Testing & Validation Engineer</div>
+                  <div style="font-size:12px;color:var(--g)">AnoraLabs · India</div>
+                </div>
+                <span style="font-family:'Space Mono',monospace;font-size:10px;color:rgba(255,255,255,0.3);white-space:nowrap">Feb 2026 · 180 days</span>
+              </div>
+              <p style="font-size:13px;color:rgba(255,255,255,0.5);line-height:1.7;margin-bottom:12px">Embedded systems testing and hardware validation for industrial electronic products. Debugging, protocol analysis, circuit-level testing and validation of communication interfaces.</p>
+              <div style="display:flex;flex-wrap:wrap;gap:6px">
+                <span class="sk">ATE</span><span class="sk">Protocol Analysis</span><span class="sk">Circuit Testing</span><span class="sk">Hardware Validation</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Feynman Aerospace -->
+          <div class="rv d1 exp-item" style="position:relative;margin-bottom:32px">
+            <div style="position:absolute;left:-25px;top:6px;width:10px;height:10px;border-radius:50%;background:rgba(0,229,122,0.5);box-shadow:0 0 6px rgba(0,229,122,0.3)"></div>
+            <div style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.07);border-radius:10px;padding:20px 22px;transition:border-color 0.2s" onmouseover="this.style.borderColor='rgba(0,229,122,0.25)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.07)'">
+              <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px;gap:8px;flex-wrap:wrap">
+                <div>
+                  <div style="font-size:14px;color:#fff;font-weight:500;margin-bottom:2px">Aircraft Design & Testing Trainee</div>
+                  <div style="font-size:12px;color:var(--g)">Feynman Aerospace · Germany</div>
+                </div>
+                <span style="font-family:'Space Mono',monospace;font-size:10px;color:rgba(255,255,255,0.3);white-space:nowrap">Jan 2025 · 30 days</span>
+              </div>
+              <p style="font-size:13px;color:rgba(255,255,255,0.5);line-height:1.7;margin-bottom:12px">Design and performance evaluation of aircraft systems. Hands-on testing, component analysis, and exposure to industry-standard protocols for aircraft validation.</p>
+              <div style="display:flex;flex-wrap:wrap;gap:6px">
+                <span class="sk">Aircraft Design</span><span class="sk">Testing</span><span class="sk">Component Analysis</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- OpenDroids -->
+          <div class="rv d2 exp-item" style="position:relative">
+            <div style="position:absolute;left:-25px;top:6px;width:10px;height:10px;border-radius:50%;background:rgba(0,229,122,0.3);"></div>
+            <div style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.07);border-radius:10px;padding:20px 22px;transition:border-color 0.2s" onmouseover="this.style.borderColor='rgba(0,229,122,0.25)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.07)'">
+              <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px;gap:8px;flex-wrap:wrap">
+                <div>
+                  <div style="font-size:14px;color:#fff;font-weight:500;margin-bottom:2px">Robotics Project Trainee</div>
+                  <div style="font-size:12px;color:var(--g)">OpenDroids · USA</div>
+                </div>
+                <span style="font-family:'Space Mono',monospace;font-size:10px;color:rgba(255,255,255,0.3);white-space:nowrap">Jan 2024 · 30 days</span>
+              </div>
+              <p style="font-size:13px;color:rgba(255,255,255,0.5);line-height:1.7;margin-bottom:12px">Hardware integration and embedded systems programming for robotics projects. Team-based troubleshooting and design reviews using ROS2, Gazebo and embedded platforms.</p>
+              <div style="display:flex;flex-wrap:wrap;gap:6px">
+                <span class="sk">ROS2</span><span class="sk">Gazebo</span><span class="sk">Hardware Integration</span><span class="sk">Embedded Systems</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- RIGHT — Leadership & Roles -->
+      <div>
+        <div class="rv" style="display:flex;align-items:center;gap:10px;margin-bottom:28px">
+          <div style="width:28px;height:28px;background:rgba(0,229,122,0.08);border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#00e57a" stroke-width="2" stroke-linecap="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+          </div>
+          <span style="font-family:'Space Mono',monospace;font-size:11px;color:var(--g);letter-spacing:0.14em;text-transform:uppercase">Leadership & Roles</span>
+        </div>
+
+        <div style="position:relative;padding-left:20px;border-left:1px solid rgba(0,229,122,0.2)">
+
+          <!-- IEEE PES Chair -->
+          <div class="rv exp-item" style="position:relative;margin-bottom:24px">
+            <div style="position:absolute;left:-25px;top:6px;width:10px;height:10px;border-radius:50%;background:var(--g);box-shadow:0 0 8px rgba(0,229,122,0.6)"></div>
+            <div style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.07);border-radius:10px;padding:18px 20px;transition:border-color 0.2s" onmouseover="this.style.borderColor='rgba(0,229,122,0.25)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.07)'">
+              <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;flex-wrap:wrap;margin-bottom:4px">
+                <div>
+                  <div style="font-size:14px;color:#fff;font-weight:500;margin-bottom:2px">Chair</div>
+                  <div style="font-size:12px;color:var(--g)">IEEE PES SBC MACE</div>
+                </div>
+                <span style="font-family:'Space Mono',monospace;font-size:10px;color:rgba(255,255,255,0.3);white-space:nowrap">Mar 2024 – Feb 2025</span>
+              </div>
+              <p style="font-size:13px;color:rgba(255,255,255,0.5);line-height:1.6">Led and coordinated technical events and workshops for the Power & Energy Society student branch chapter.</p>
+            </div>
+          </div>
+
+          <!-- Content Lead -->
+          <div class="rv d1 exp-item" style="position:relative;margin-bottom:24px">
+            <div style="position:absolute;left:-25px;top:6px;width:10px;height:10px;border-radius:50%;background:rgba(0,229,122,0.5)"></div>
+            <div style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.07);border-radius:10px;padding:18px 20px;transition:border-color 0.2s" onmouseover="this.style.borderColor='rgba(0,229,122,0.25)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.07)'">
+              <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;flex-wrap:wrap;margin-bottom:4px">
+                <div>
+                  <div style="font-size:14px;color:#fff;font-weight:500;margin-bottom:2px">Content Lead</div>
+                  <div style="font-size:12px;color:var(--g)">IEEE PES Kerala Chapter</div>
+                </div>
+                <span style="font-family:'Space Mono',monospace;font-size:10px;color:rgba(255,255,255,0.3);white-space:nowrap">Apr 2024 – Mar 2025</span>
+              </div>
+              <p style="font-size:13px;color:rgba(255,255,255,0.5);line-height:1.6">Created and curated technical content, enhancing communication skills and technical knowledge dissemination.</p>
+            </div>
+          </div>
+
+          <!-- Team Lead IAM3D -->
+          <div class="rv d2 exp-item" style="position:relative;margin-bottom:24px">
+            <div style="position:absolute;left:-25px;top:6px;width:10px;height:10px;border-radius:50%;background:rgba(0,229,122,0.4)"></div>
+            <div style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.07);border-radius:10px;padding:18px 20px;transition:border-color 0.2s" onmouseover="this.style.borderColor='rgba(0,229,122,0.25)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.07)'">
+              <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;flex-wrap:wrap;margin-bottom:4px">
+                <div>
+                  <div style="font-size:14px;color:#fff;font-weight:500;margin-bottom:2px">Team Lead</div>
+                  <div style="font-size:12px;color:var(--g)">IAM3D Competition</div>
+                </div>
+                <span style="font-family:'Space Mono',monospace;font-size:10px;color:rgba(255,255,255,0.3);white-space:nowrap">Mar 2025</span>
+              </div>
+              <p style="font-size:13px;color:rgba(255,255,255,0.5);line-height:1.6">Directed drone design, assembly and software setup. Secured 2nd place nationally.</p>
+            </div>
+          </div>
+
+          <!-- Co-Lead Drone -->
+          <div class="rv d3 exp-item" style="position:relative;margin-bottom:24px">
+            <div style="position:absolute;left:-25px;top:6px;width:10px;height:10px;border-radius:50%;background:rgba(0,229,122,0.35)"></div>
+            <div style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.07);border-radius:10px;padding:18px 20px;transition:border-color 0.2s" onmouseover="this.style.borderColor='rgba(0,229,122,0.25)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.07)'">
+              <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;flex-wrap:wrap;margin-bottom:4px">
+                <div>
+                  <div style="font-size:14px;color:#fff;font-weight:500;margin-bottom:2px">Co-Lead</div>
+                  <div style="font-size:12px;color:var(--g)">SAE Drone Design Challenge</div>
+                </div>
+                <span style="font-family:'Space Mono',monospace;font-size:10px;color:rgba(255,255,255,0.3);white-space:nowrap">Oct 2024</span>
+              </div>
+              <p style="font-size:13px;color:rgba(255,255,255,0.5);line-height:1.6">Collaborated on drone project execution, fostering teamwork and problem-solving abilities.</p>
+            </div>
+          </div>
+
+          <!-- Safety Devices -->
+          <div class="rv d4 exp-item" style="position:relative;margin-bottom:24px">
+            <div style="position:absolute;left:-25px;top:6px;width:10px;height:10px;border-radius:50%;background:rgba(0,229,122,0.3)"></div>
+            <div style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.07);border-radius:10px;padding:18px 20px;transition:border-color 0.2s" onmouseover="this.style.borderColor='rgba(0,229,122,0.25)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.07)'">
+              <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;flex-wrap:wrap;margin-bottom:4px">
+                <div>
+                  <div style="font-size:14px;color:#fff;font-weight:500;margin-bottom:2px">Project Lead</div>
+                  <div style="font-size:12px;color:var(--g)">Safety Devices for Women</div>
+                </div>
+                <span style="font-family:'Space Mono',monospace;font-size:10px;color:rgba(255,255,255,0.3);white-space:nowrap">Aug 2024</span>
+              </div>
+              <p style="font-size:13px;color:rgba(255,255,255,0.5);line-height:1.6">Managed the design and development of safety devices, improving team collaboration and product development skills.</p>
+            </div>
+          </div>
+
+          <!-- MathWorks MiniDrone -->
+          <div class="rv exp-item" style="position:relative">
+            <div style="position:absolute;left:-25px;top:6px;width:10px;height:10px;border-radius:50%;background:rgba(0,229,122,0.25)"></div>
+            <div style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.07);border-radius:10px;padding:18px 20px;transition:border-color 0.2s" onmouseover="this.style.borderColor='rgba(0,229,122,0.25)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.07)'">
+              <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;flex-wrap:wrap;margin-bottom:4px">
+                <div>
+                  <div style="font-size:14px;color:#fff;font-weight:500;margin-bottom:2px">Participant</div>
+                  <div style="font-size:12px;color:var(--g)">MathWorks MiniDrone Competition</div>
+                </div>
+                <span style="font-family:'Space Mono',monospace;font-size:10px;color:rgba(255,255,255,0.3);white-space:nowrap">Jul 2025</span>
+              </div>
+              <p style="font-size:13px;color:rgba(255,255,255,0.5);line-height:1.6">Created and designed Simulink models and control systems for drone navigation using image processing.</p>
+            </div>
+          </div>
+
+        </div>
       </div>
     </div>
   </div>
