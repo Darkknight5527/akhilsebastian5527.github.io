@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Akhil Sebastian — Robotics & Embedded Engineer</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --green: #00e57a;
+    --green-dim: rgba(0,229,122,0.15);
+    --bg: #050a05;
+    --bg2: #0a0f0a;
+    --text: #ffffff;
+    --muted: rgba(255,255,255,0.45);
+    --border: rgba(0,229,122,0.12);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+  }
+
+  /* ─── NAV ─────────────────────────────────────────── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    padding: 20px 40px 16px;
+    background: rgba(5,10,5,0.88);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--border);
+    transition: padding 0.3s;
+  }
+  nav.scrolled {
+    padding: 12px 40px;
+    gap: 10px;
+  }
+  .nav-logo {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--green);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+  .nav-links {
+    display: flex;
+    gap: 36px;
+    list-style: none;
+  }
+  .nav-links a {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    text-decoration: none;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding-bottom: 3px;
+    border-bottom: 1px solid transparent;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .nav-links a:hover,
+  .nav-links a.active {
+    color: var(--green);
+    border-bottom-color: var(--green);
+  }
+
+  /* ─── HERO ────────────────────────────────────────── */
+  #home {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 120px 40px 80px;
+    overflow: hidden;
+  }
+
+  #pcb-canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.42;
+  }
+
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(5,10,5,0.6) 0%,
+      rgba(5,10,5,0.25) 45%,
+      rgba(5,10,5,0.75) 100%
+    );
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero-eyebrow {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    color: var(--green);
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.2s forwards;
+  }
+  .hero-eyebrow::before,
+  .hero-eyebrow::after {
+    content: '';
+    display: block;
+    width: 36px;
+    height: 1px;
+    background: var(--green);
+  }
+
+  .hero-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(72px, 13vw, 140px);
+    line-height: 0.88;
+    letter-spacing: 0.05em;
+    color: #fff;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    opacity: 0;
+    animation: fadeUp 0.9s 0.4s forwards;
+  }
+  .hero-name .green { color: var(--green); }
+
+  .hero-tagline {
+    font-family: 'Space Mono', monospace;
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+    margin-bottom: 44px;
+    opacity: 0;
+    animation: fadeUp 0.9s 0.6s forwards;
+  }
+  .hero-tagline b {
+    color: rgba(255,255,255,0.8);
+    font-weight: 400;
+  }
+
+  .hero-btns {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+    opacity: 0;
+    animation: fadeUp 0.9s 0.8s forwards;
+  }
+
+  .btn {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 13px 26px;
+    border-radius: 3px;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition: all 0.2s;
+  }
+  .btn-primary {
+    background: var(--green);
+    color: #050a05;
+    font-weight: 700;
+    border-color: var(--green);
+  }
+  .btn-primary:hover { background: #00ff88; border-color: #00ff88; transform: translateY(-1px); }
+  .btn-outline {
+    background: transparent;
+    color: rgba(255,255,255,0.7);
+    border-color: rgba(255,255,255,0.18);
+  }
+  .btn-outline:hover { border-color: var(--green); color: var(--green); transform: translateY(-1px); }
+
+  .scroll-hint {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 7px;
+    margin-top: 56px;
+    color: rgba(255,255,255,0.2);
+    font-family: 'Space Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    opacity: 0;
+    animation: fadeUp 1s 1.1s forwards;
+  }
+  .scroll-line {
+    width: 1px;
+    height: 40px;
+    background: var(--green);
+    opacity: 0.35;
+    animation: pulse-line 2s ease-in-out infinite;
+  }
+  @keyframes pulse-line {
+    0%, 100% { transform: scaleY(1); opacity: 0.25; }
+    50% { transform: scaleY(1.15); opacity: 0.7; }
+  }
+
+  /* ─── STATS BAR ───────────────────────────────────── */
+  .stats-bar {
+    display: flex;
+    justify-content: center;
+    background: var(--bg2);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .stat {
+    flex: 1;
+    max-width: 180px;
+    text-align: center;
+    padding: 28px 20px;
+    border-right: 1px solid var(--border);
+    transition: background 0.2s;
+  }
+  .stat:last-child { border-right: none; }
+  .stat:hover { background: rgba(0,229,122,0.04); }
+  .stat-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 34px;
+    color: var(--green);
+    letter-spacing: 0.06em;
+    display: block;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .stat-lbl {
+    font-family: 'Space Mono', monospace;
+    font-size: 9px;
+    color: var(--muted);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  /* ─── ANIMATIONS ──────────────────────────────────── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(22px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ─── RESPONSIVE ──────────────────────────────────── */
+  @media (max-width: 640px) {
+    nav { padding: 16px 20px 14px; }
+    .nav-links { gap: 20px; }
+    .nav-links a { font-size: 10px; }
+    #home { padding: 100px 20px 60px; }
+    .hero-btns { gap: 8px; }
+    .btn { font-size: 10px; padding: 11px 18px; }
+    .stats-bar { flex-wrap: wrap; }
+    .stat { max-width: 50%; border-bottom: 1px solid var(--border); }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <div class="nav-logo">AS &mdash; Portfolio</div>
+  <ul class="nav-links">
+    <li><a href="#home" class="active">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="home">
+  <canvas id="pcb-canvas"></canvas>
+  <div class="hero-overlay"></div>
+
+  <div class="hero-content">
+    <div class="hero-eyebrow">EEE Engineer</div>
+
+    <h1 class="hero-name">
+      AKHIL<br>
+      <span class="green">SEBASTIAN</span>
+    </h1>
+
+    <p class="hero-tagline">
+      <b>Robotics</b> &nbsp;&middot;&nbsp; <b>Embedded Systems</b> &nbsp;&middot;&nbsp; <b>ATE</b>
+    </p>
+
+    <div class="hero-btns">
+      <a href="#projects" class="btn btn-primary">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+        View Projects
+      </a>
+      <a href="resume.pdf" download class="btn btn-outline">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7,10 12,15 17,10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Download Resume
+      </a>
+      <a href="https://github.com/akhilsebastian5527" target="_blank" class="btn btn-outline">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+        View GitHub
+      </a>
+      <a href="#contact" class="btn btn-outline">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        Contact Me
+      </a>
+    </div>
+
+    <div class="scroll-hint">
+      <div class="scroll-line"></div>
+      Scroll
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stat">
+    <span class="stat-num">8.16</span>
+    <span class="stat-lbl">CGPA / 10</span>
+  </div>
+  <div class="stat">
+    <span class="stat-num">5+</span>
+    <span class="stat-lbl">Projects Built</span>
+  </div>
+  <div class="stat">
+    <span class="stat-num">2ND</span>
+    <span class="stat-lbl">IAM3D National</span>
+  </div>
+  <div class="stat">
+    <span class="stat-num">3×</span>
+    <span class="stat-lbl">Internships</span>
+  </div>
+  <div class="stat">
+    <span class="stat-num">180D</span>
+    <span class="stat-lbl">ATE Experience</span>
+  </div>
+</div>
+
+<!-- PLACEHOLDER SECTIONS (to be filled section by section) -->
+<section id="about"      style="min-height:100px;"></section>
+<section id="projects"   style="min-height:100px;"></section>
+<section id="experience" style="min-height:100px;"></section>
+<section id="skills"     style="min-height:100px;"></section>
+<section id="contact"    style="min-height:100px;"></section>
+
+<script>
+  /* ── PCB CANVAS ─────────────────────────────── */
+  const canvas = document.getElementById('pcb-canvas');
+  const ctx    = canvas.getContext('2d');
+
+  function drawPCB() {
+    const W = canvas.width  = canvas.offsetWidth;
+    const H = canvas.height = canvas.offsetHeight;
+    ctx.clearRect(0, 0, W, H);
+
+    const G = 40;
+
+    for (let x = 0; x <= W; x += G) {
+      for (let y = 0; y <= H; y += G) {
+
+        /* traces */
+        if (Math.random() > 0.3) {
+          ctx.beginPath();
+          ctx.strokeStyle = 'rgba(0,229,122,0.2)';
+          ctx.lineWidth   = 0.8;
+          ctx.moveTo(x, y);
+          const dirs = [[G,0],[0,G],[-G,0],[0,-G]];
+          const d    = dirs[Math.floor(Math.random() * dirs.length)];
+          ctx.lineTo(x + d[0], y + d[1]);
+          ctx.stroke();
+        }
+
+        /* pads */
+        if (Math.random() > 0.52) {
+          ctx.beginPath();
+          ctx.arc(x, y, 2.8, 0, Math.PI * 2);
+          ctx.fillStyle = 'rgba(0,229,122,0.55)';
+          ctx.fill();
+        }
+
+        /* SMD pads */
+        if (Math.random() > 0.82) {
+          ctx.strokeStyle = 'rgba(0,229,122,0.38)';
+          ctx.lineWidth   = 0.8;
+          ctx.strokeRect(x - 6, y - 4, 12, 8);
+        }
+
+        /* vias */
+        if (Math.random() > 0.88) {
+          ctx.beginPath();
+          ctx.arc(x, y, 5.5, 0, Math.PI * 2);
+          ctx.strokeStyle = 'rgba(0,229,122,0.3)';
+          ctx.lineWidth   = 0.9;
+          ctx.stroke();
+          ctx.beginPath();
+          ctx.arc(x, y, 2, 0, Math.PI * 2);
+          ctx.fillStyle = 'rgba(0,229,122,0.4)';
+          ctx.fill();
+        }
+      }
+    }
+
+    /* long power/ground traces */
+    for (let i = 0; i < 22; i++) {
+      const sx  = Math.floor(Math.random() * (W / G)) * G;
+      const sy  = Math.floor(Math.random() * (H / G)) * G;
+      const len = (3 + Math.floor(Math.random() * 6)) * G;
+      ctx.beginPath();
+      ctx.moveTo(sx, sy);
+      Math.random() > 0.5 ? ctx.lineTo(sx + len, sy) : ctx.lineTo(sx, sy + len);
+      ctx.strokeStyle = 'rgba(0,229,122,0.35)';
+      ctx.lineWidth   = 1.6;
+      ctx.stroke();
+    }
+  }
+
+  drawPCB();
+  window.addEventListener('resize', drawPCB);
+
+  /* ── NAVBAR SHRINK ON SCROLL ────────────────── */
+  window.addEventListener('scroll', () => {
+    document.getElementById('navbar')
+      .classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  /* ── ACTIVE NAV LINK ────────────────────────── */
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks  = document.querySelectorAll('.nav-links a');
+  const observer  = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        navLinks.forEach(a => a.classList.remove('active'));
+        const match = document.querySelector(`.nav-links a[href="#${e.target.id}"]`);
+        if (match) match.classList.add('active');
+      }
+    });
+  }, { threshold: 0.4 });
+  sections.forEach(s => observer.observe(s));
+</script>
+
+</body>
+</html>
