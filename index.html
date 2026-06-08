@@ -26,15 +26,15 @@ body{background:var(--bg);color:#fff;font-family:'Inter',sans-serif;overflow-x:h
 
 #prog{position:fixed;top:0;left:0;height:2px;background:var(--g);width:0%;z-index:500;pointer-events:none;transition:width 0.1s}
 
-nav{position:fixed;top:0;left:0;right:0;z-index:400;display:flex;flex-direction:column;align-items:center;gap:10px;padding:18px 40px 14px;transition:background 0.4s,padding 0.3s}
-nav.filled{background:rgba(3,8,5,0.95);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);padding:10px 40px}
+nav{position:fixed;top:0;left:0;right:0;z-index:999;display:flex;flex-direction:column;align-items:center;gap:10px;padding:18px 40px 14px;transition:background 0.4s,padding 0.3s,gap 0.3s}
+nav.filled{background:rgba(3,8,5,0.98);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:10px 40px;gap:8px}
 .nav-logo{font-family:'Space Mono',monospace;font-size:11px;font-weight:700;color:var(--g);letter-spacing:0.2em;text-transform:uppercase}
 .nav-links{display:flex;gap:32px;list-style:none}
 .nav-links a{font-family:'Space Mono',monospace;font-size:11px;color:var(--muted);text-decoration:none;letter-spacing:0.12em;text-transform:uppercase;padding-bottom:3px;border-bottom:1px solid transparent;transition:color 0.2s,border-color 0.2s}
 .nav-links a:hover,.nav-links a.active{color:var(--g);border-bottom-color:var(--g)}
 
 /* HERO */
-#home{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:120px 40px 80px;overflow:hidden}
+#home{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:120px 40px 80px;overflow:hidden;scroll-margin-top:0}
 #hero-canvas{position:absolute;inset:0;width:100%;height:100%}
 .hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(3,8,5,0.55) 0%,rgba(3,8,5,0.2) 45%,rgba(3,8,5,0.92) 100%)}
 .hero-content{position:relative;z-index:2;text-align:center;display:flex;flex-direction:column;align-items:center}
@@ -72,7 +72,7 @@ nav.filled{background:rgba(3,8,5,0.95);backdrop-filter:blur(14px);border-bottom:
 @keyframes mqroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
 /* SECTIONS */
-.section{position:relative;z-index:10;background:rgba(7,16,10,0.97);border-bottom:1px solid var(--border)}
+.section{position:relative;z-index:10;background:rgba(7,16,10,0.97);border-bottom:1px solid var(--border);scroll-margin-top:80px}
 .section.alt{background:rgba(3,8,5,0.98)}
 .section-inner{max-width:1000px;margin:0 auto;padding:90px 40px 80px}
 
@@ -1444,7 +1444,7 @@ const wMat=()=>new THREE.LineBasicMaterial({color:0x00e57a,transparent:true,opac
 window.addEventListener('scroll',()=>{const p=window.scrollY/(document.body.scrollHeight-window.innerHeight)*100;document.getElementById('prog').style.width=Math.min(p,100)+'%';},{passive:true});
 
 /* ── NAV ── */
-window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('filled',window.scrollY>60);},{passive:true});
+window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('filled',window.scrollY>80);},{passive:true});
 
 /* ── ACTIVE NAV ── */
 document.querySelectorAll('section[id]').forEach(sec=>{
