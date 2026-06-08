@@ -1447,8 +1447,26 @@ window.addEventListener('scroll',()=>{const p=window.scrollY/(document.body.scro
 window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('filled',window.scrollY>80);},{passive:true});
 
 /* ── ACTIVE NAV ── */
+/* Active nav + smooth scroll with nav offset */
 document.querySelectorAll('section[id]').forEach(sec=>{
-  new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){document.querySelectorAll('.nav-links a').forEach(a=>a.classList.remove('active'));const m=document.querySelector('.nav-links a[href="#'+e.target.id+'"]');if(m)m.classList.add('active');}});},{threshold:0.35}).observe(sec);
+  new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){document.querySelectorAll('.nav-links a').forEach(a=>a.classList.remove('active'));const m=document.querySelector('.nav-links a[href="#'+e.target.id+'"]');if(m)m.classList.add('active');}});},{threshold:0.2}).observe(sec);
+});
+
+/* Override nav link clicks to account for fixed nav height */
+document.querySelectorAll('.nav-links a').forEach(a=>{
+  a.addEventListener('click', function(e){
+    e.preventDefault();
+    const id = this.getAttribute('href').replace('#','');
+    const target = document.getElementById(id);
+    if(!target) return;
+    const navH = document.getElementById('nav').offsetHeight;
+    const top = target.getBoundingClientRect().top + window.scrollY - navH - 8;
+    window.scrollTo({top: Math.max(0, top), behavior:'smooth'});
+    /* close mobile menu if open */
+    document.getElementById('hamburger')?.classList.remove('open');
+    document.getElementById('nav-links')?.classList.remove('open');
+    document.body.style.overflow='';
+  });
 });
 
 /* ── HERO ENTRANCE ── */
