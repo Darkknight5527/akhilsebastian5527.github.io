@@ -552,22 +552,46 @@ function sendMessage(){
 
   function buildNetwork(){
     nodes = []; edges = []; pulses = [];
-    /* create nodes — mix of junction nodes and component nodes */
-    const count = Math.floor((W * H) / 18000);
-    for(let i = 0; i < count; i++){
-      const type = Math.random();
-      nodes.push({
-        x: Math.random() * W,
-        y: Math.random() * H,
-        r: type > 0.85 ? 5 : type > 0.6 ? 3 : 2,
-        type: type > 0.85 ? 'ic' : type > 0.6 ? 'via' : 'junction',
-        glow: 0,        /* 0-1 glow intensity when signal arrives */
-        glowDecay: 0.03 + Math.random() * 0.03
-      });
+
+    /* grid-based placement — ensures even spread across entire canvas */
+    const cols = Math.floor(W / 110);
+    const rows = Math.floor(H / 110);
+    const cellW = W / cols;
+    const cellH = H / rows;
+
+    for(let col = 0; col < cols; col++){
+      for(let row = 0; row < rows; row++){
+        /* jitter within cell so it doesn't look like a rigid grid */
+        const jx = cellW * 0.15 + Math.random() * cellW * 0.7;
+        const jy = cellH * 0.15 + Math.random() * cellH * 0.7;
+        const x = col * cellW + jx;
+        const y = row * cellH + jy;
+        const type = Math.random();
+        nodes.push({
+          x, y,
+          r: type > 0.85 ? 5 : type > 0.6 ? 3 : 2,
+          type: type > 0.85 ? 'ic' : type > 0.6 ? 'via' : 'junction',
+          glow: 0,
+          glowDecay: 0.025 + Math.random() * 0.025
+        });
+        /* occasionally add a second node in the cell for denser areas */
+        if(Math.random() > 0.55){
+          const x2 = col * cellW + cellW * 0.15 + Math.random() * cellW * 0.7;
+          const y2 = row * cellH + cellH * 0.15 + Math.random() * cellH * 0.7;
+          const type2 = Math.random();
+          nodes.push({
+            x: x2, y: y2,
+            r: type2 > 0.85 ? 5 : type2 > 0.6 ? 3 : 2,
+            type: type2 > 0.85 ? 'ic' : type2 > 0.6 ? 'via' : 'junction',
+            glow: 0,
+            glowDecay: 0.025 + Math.random() * 0.025
+          });
+        }
+      }
     }
 
-    /* connect nearby nodes with traces — only connect if within distance */
-    const maxDist = Math.min(W, H) * 0.22;
+    /* connect nodes — shorter max distance keeps connections local & balanced */
+    const maxDist = Math.min(cellW, cellH) * 2.8;
     for(let i = 0; i < nodes.length; i++){
       const connections = [];
       for(let j = i+1; j < nodes.length; j++){
@@ -576,17 +600,16 @@ function sendMessage(){
         const dist = Math.sqrt(dx*dx + dy*dy);
         if(dist < maxDist) connections.push({j, dist});
       }
-      /* connect to 2-4 nearest */
       connections.sort((a,b) => a.dist - b.dist);
       const maxConn = 2 + Math.floor(Math.random() * 3);
       connections.slice(0, maxConn).forEach(({j}) => {
-        /* make traces axis-aligned like PCB routes */
         edges.push({from: i, to: j});
       });
     }
 
-    /* seed initial pulses */
-    for(let i = 0; i < 12; i++) spawnPulse();
+    /* seed initial pulses spread across canvas — one per grid region */
+    const seedCount = Math.floor(cols * rows * 0.35);
+    for(let i = 0; i < seedCount; i++) spawnPulse();
   }
 
   function spawnPulse(){
@@ -754,7 +777,7 @@ function sendMessage(){
             trail: []
           });
           /* sometimes fork into two signals */
-          if(Math.random() > 0.6 && outEdges.length > 1){
+          if(Math.random() > 0.5 && outEdges.length > 1){
             const next2 = outEdges[Math.floor(Math.random() * outEdges.length)];
             const newEdge2 = next2.from === p.edge.to ? next2 : {from: next2.to, to: next2.from};
             pulses.push({
@@ -770,9 +793,9 @@ function sendMessage(){
         pulses.splice(i, 1);
       }
     }
-    /* keep pulse count healthy */
-    while(pulses.length < 15) spawnPulse();
-    while(pulses.length > 80) pulses.splice(0, 1);
+    /* keep pulse count healthy — higher count for fuller coverage */
+    while(pulses.length < 30) spawnPulse();
+    while(pulses.length > 140) pulses.splice(0, 1);
   }
 
   let animRunning = false;
