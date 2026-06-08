@@ -18,7 +18,7 @@
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{--g:#00e57a;--bg:#030805;--bg2:#07100a;--muted:rgba(255,255,255,0.45);--border:rgba(0,229,122,0.12)}
-html{scroll-behavior:smooth}
+html{scroll-behavior:auto}
 body{background:var(--bg);color:#fff;font-family:'Inter',sans-serif;overflow-x:hidden}
 ::-webkit-scrollbar{width:3px}
 ::-webkit-scrollbar-track{background:#030805}
@@ -1500,14 +1500,7 @@ document.querySelectorAll('.rv,.rl,.rr').forEach(el=>{
     document.body.style.overflow = links.classList.contains('open') ? 'hidden' : '';
   });
 
-  /* close on link click */
-  links.querySelectorAll('a').forEach(a => {
-    a.addEventListener('click', () => {
-      btn.classList.remove('open');
-      links.classList.remove('open');
-      document.body.style.overflow = '';
-    });
-  });
+  /* close on link click — handled by nav override below */
 
   window.addEventListener('resize', updateVisibility);
   updateVisibility();
