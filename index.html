@@ -1568,8 +1568,8 @@ document.querySelectorAll('.rv,.rl,.rr').forEach(el=>{
   if(!canvas) return;
   const ctx     = canvas.getContext('2d');
   if(!ctx) return;
-  const W = () => canvas.width  = canvas.offsetWidth;
-  const H = () => canvas.height = canvas.offsetHeight;
+  const W = () => { if(canvas) canvas.width  = canvas.offsetWidth; };
+  const H = () => { if(canvas) canvas.height = canvas.offsetHeight; };
 
   function resize(){ W(); H(); }
   window.addEventListener('resize', resize);
@@ -1670,6 +1670,7 @@ document.querySelectorAll('.rv,.rl,.rr').forEach(el=>{
   /* ── HERO FLICKER ── */
   function flickerHero(on){
     const hero = document.getElementById('home');
+    if(!hero) return;
     const content = hero.querySelector('.hero-content');
     if(!content) return;
     if(!on){
@@ -1689,6 +1690,7 @@ document.querySelectorAll('.rv,.rl,.rr').forEach(el=>{
   /* ── ANIMATION SEQUENCE ── */
   function startEasterEgg(){
     if(animating || !onHero) return;
+    if(!stage || !canvas || !ctx) return;
     animating = true;
     stage.style.display = 'block';
 
